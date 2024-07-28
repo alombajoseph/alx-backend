@@ -1,35 +1,30 @@
-sic Flask app and Babel setup
-Get Locale from request
-Parameterize templates '''
+#!/usr/bin/env python3
+""" Flask application """
+
 
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
+
+class Config:
+    """ l18n Config class """
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+
+
 app = Flask(__name__)
+app.config.from_object("1-app.Config")
 babel = Babel(app)
 
 
-class Config:
-    ''' app Config '''
-    LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
-
-
-app.config.from_object('3-app.Config')
+@app.route("/")
+def hello_world():
+    """ Handle default route """
+    return render_template("3-index.html")
 
 
 @babel.localeselector
-def get_locale() -> str:
-    ''' Determine best match with supported languages '''
-    return request.accept_languages.best_match(app.Config['LANGUAGES'])
-
-
-@app.route("/", methods=["GET"], strict_slashes=False)
-def hello_world() -> str:
-    ''' Output templates '''
-    return render_template('3-index.html')
-
-
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="5000")
+def get_locale():
+    """ Gets the best matching language for user """
+    return request.accept_languages.best_match(Config.LANGUAGES)

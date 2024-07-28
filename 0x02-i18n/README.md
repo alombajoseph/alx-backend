@@ -1,9 +1,9 @@
 0x02. i18n
-it has the following tasks
+has the following tasks
 Tasks
 0. Basic Flask app
 mandatory
-Score: 0.0% (Checks completed: 0.0%)
+Score: 16.67% (Checks completed: 33.33%)
 First you will setup a basic Flask app in 0-app.py. Create a single / route and an index.html template that simply outputs “Welcome to Holberton” as page title (<title>) and “Hello world” as header (<h1>).
 
 Repo:
@@ -14,7 +14,7 @@ File: 0-app.py, templates/0-index.html
    
 1. Basic Babel setup
 mandatory
-Score: 0.0% (Checks completed: 0.0%)
+Score: 11.11% (Checks completed: 22.22%)
 Install the Babel Flask extension:
 
 $ pip3 install flask_babel==2.0.0
@@ -34,7 +34,7 @@ File: 1-app.py, templates/1-index.html
     
 2. Get locale from request
 mandatory
-Score: 0.0% (Checks completed: 0.0%)
+Score: 20.0% (Checks completed: 40.0%)
 Create a get_locale function with the babel.localeselector decorator. Use request.accept_languages to determine the best match with our supported languages.
 
 Repo:
@@ -45,7 +45,7 @@ File: 2-app.py, templates/2-index.html
    
 3. Parametrize templates
 mandatory
-Score: 0.0% (Checks completed: 0.0%)
+Score: 18.75% (Checks completed: 37.5%)
 Use the _ or gettext function to parametrize your templates. Use the message IDs home_title and home_header.
 
 Create a babel.cfg file containing
@@ -95,7 +95,7 @@ File: 4-app.py, templates/4-index.html
    
 5. Mock logging in
 mandatory
-Score: 0.0% (Checks completed: 0.0%)
+Score: 12.5% (Checks completed: 25.0%)
 Creating a user login system is outside the scope of this project. To emulate a similar behavior, copy the following user table in 5-app.py.
 
 users = {
@@ -190,5 +190,3 @@ Repo:
 GitHub repository: alx-backend
 Directory: 0x02-i18n
 File: app.py, templates/index.html, translations/en/LC_MESSAGES/messages.po, translations/fr/LC_MESSAGES/messages.po
-  
-

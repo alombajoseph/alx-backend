@@ -1,5 +1,8 @@
-sic Flask app and Babel setup
-Get Locale from request '''
+#!/usr/bin/env python3
+
+"""
+2. Basic Flask app
+"""
 
 from flask import Flask, render_template, request
 from flask_babel import Babel
@@ -9,26 +12,32 @@ babel = Babel(app)
 
 
 class Config:
-    ''' app Config '''
+    """
+    Config class.
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object('2-app.Config')
+app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale() -> str:
-    ''' Determine best match with supported languages '''
-    return request.accept_languages.best_match(['en', 'fr'])
+def get_locale():
+    """
+    get_locale.
+    """
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route("/", methods=["GET"], strict_slashes=False)
-def hello_world() -> str:
-    ''' Output templates '''
+@app.route('/', methods=["GET"], strict_slashes=False)
+def hello():
+    """
+    hello.
+    """
     return render_template('2-index.html')
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
