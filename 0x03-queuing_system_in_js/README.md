@@ -1,6 +1,5 @@
 0x03. Queuing System in JS
-has the following tasks
-Tasks
+s the following taskss
 0. Install a redis instance
 mandatory
 Download, extract, and compile the latest stable Redis version (higher than 5.0.7 - https://redis.io/downloads/):
